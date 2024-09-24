@@ -7,8 +7,6 @@ Este proyecto es una aplicación web desarrollada con Django para gestionar prod
 2. [Tecnologías Utilizadas](#tecnologías-utilizadas)
 3. [Configuración del Entorno](#configuración-del-entorno)
 4. [Uso](#uso)
-5. [Contribución](#contribución)
-6. [Licencia](#licencia)
 
 ## Características
 
@@ -32,3 +30,25 @@ Este proyecto es una aplicación web desarrollada con Django para gestionar prod
 1. **Clona el repositorio:**
    ```bash
    git clone <(https://github.com/Menkion/TI2041-2024.git)>
+
+## Uso
+
+### Registro de Productos
+
+1. **Acceder al formulario de registro:**
+   - Navega a la página de registro (`http://127.0.0.1:8000/productos/`).
+  
+2. **Completar el formulario:**
+   - **Nombre:** Introduce el nombre del producto (ejemplo: "Galletas").
+   - **Marca:** Especifica la marca del producto (ejemplo: "Brand A").
+   - **Código:** Ingresa un código único para el producto (ejemplo: "GAL123").
+   - **Fecha de Vencimiento:** Introduce la fecha de vencimiento en el formato `DD-MM-YYYY` (ejemplo: "01-01-2025").
+   - **Precio:** Especifica el precio del producto (ejemplo: "2.50").
+
+3. **Guardar el producto:**
+   - Haz clic en el botón "Guardar Producto" para registrar el producto.
+
+### Consulta de Productos
+
+- Para ver todos los productos registrados, dirígete a la página de consulta. Allí se mostrará una lista con todos los productos ingresados, incluyendo todos los detalles (nombre, marca, código, fecha de vencimiento y precio).
+
