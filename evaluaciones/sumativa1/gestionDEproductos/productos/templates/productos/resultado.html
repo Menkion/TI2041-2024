@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado del Registro</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <h1>Resultado del Registro</h1>
+    {% if error %}
+        <p>Error: {{ error }}</p>
+    {% else %}
+        <p>Producto: {{ producto.nombre }}</p>
+        <p>Marca: {{ producto.marca }}</p>
+        <p>Código: {{ producto.codigo }}</p>
+        <p>Fecha de Vencimiento: {{ producto.fecha_vencimiento }}</p>
+        <p>Precio: ${{ producto.precio }}</p>
+        <p>El producto se ha registrado correctamente.</p>
+    {% endif %}
+    <a href="{% url 'listar_productos' %}"><button>Volver a Consulta</button></a>
+    <a href="{% url 'registrar_producto' %}"><button>Registrar Otro Producto</button></a>
+</body>
+</html>

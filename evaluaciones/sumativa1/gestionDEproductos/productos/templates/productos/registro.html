@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Productos</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <h1>Registrar Producto</h1>
+    <form action="{% url 'guardar_producto' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Esto renderiza todos los campos del formulario -->
+        <button type="submit">Guardar Producto</button>
+    </form>
+    <a href="{% url 'listar_productos' %}"><button>Volver a la Consulta</button></a>
+</body>
+</html>
