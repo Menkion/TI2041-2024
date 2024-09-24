@@ -31,4 +31,4 @@ Este proyecto es una aplicación web desarrollada con Django para gestionar prod
 
 1. **Clona el repositorio:**
    ```bash
-   git clone <url_del_repositorio>
+   git clone <(https://github.com/Menkion/TI2041-2024.git)>
