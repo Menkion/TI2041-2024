@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Productos</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Productos</h1>
+        <input type="text" id="busqueda" onkeyup="filtrarProductos()" placeholder="Buscar productos...">
+        <div class="lista-productos">
+            <ul id="lista-productos">
+                {% for producto in productos %}
+                    <li>
+                        {{ producto.nombre }} - Marca: {{ producto.marca }} - Categoría: {{ producto.categoria }} - Característica: {{ producto.caracteristica }} - Código: {{ producto.codigo }} - Vence: {{ producto.fecha_vencimiento }} - ${{ producto.precio }}
+
+                        <!-- Botón para eliminar el producto -->
+                        <form method="POST" action="{% url 'eliminar_producto' producto.id %}" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?');" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="eliminar-boton">Eliminar</button>
+                        </form>
+                    </li>
+                {% empty %}
+                    <li>No hay productos registrados.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <a href="{% url 'registrar_producto' %}"><button>Registrar Producto</button></a>
+    </div>
+
+    <script>
+        function filtrarProductos() {
+            const input = document.getElementById('busqueda');
+            const filter = input.value.toLowerCase();
+            const ul = document.getElementById('lista-productos');
+            const li = ul.getElementsByTagName('li');
+
+            let hasResults = false;  // Variable para verificar si hay resultados
+            for (let i = 0; i < li.length; i++) {
+                const producto = li[i].textContent || li[i].innerText;
+                li[i].style.display = producto.toLowerCase().includes(filter) ? '' : 'none';
+                if (li[i].style.display !== 'none') {
+                    hasResults = true;  // Se encontró al menos un resultado
+                }
+            }
+            if (!hasResults) {
+                ul.innerHTML = '<li>No se encontraron productos.</li>';  // Mensaje si no hay resultados
+            }
+        }
+    </script>
+</body>
+</html>

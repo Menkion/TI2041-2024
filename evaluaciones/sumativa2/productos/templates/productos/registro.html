@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Productos</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script>
+        let caracteristicaCount = 0;
+
+        function agregarCaracteristica() {
+            caracteristicaCount++;
+            const container = document.getElementById('caracteristicas-container');
+            const newCaracteristica = `
+                <div>
+                    <label for="caracteristica_nombre_${caracteristicaCount}">Nombre de la característica:</label>
+                    <input type="text" name="caracteristicas-${caracteristicaCount}-nombre" id="caracteristica_nombre_${caracteristicaCount}">
+                    <label for="caracteristica_valor_${caracteristicaCount}">Valor de la característica:</label>
+                    <input type="text" name="caracteristicas-${caracteristicaCount}-valor" id="caracteristica_valor_${caracteristicaCount}">
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', newCaracteristica);
+            document.getElementById('caracteristica_count').value = caracteristicaCount;
+        }
+    </script>
+</head>
+<body>
+    <h1>Registrar Producto</h1>
+    <form method="POST" action="{% url 'guardar_producto' %}">
+        {% csrf_token %}
+        
+        {{ producto_form.as_p }}  (Mes/Día/Año)
+
+        {{ caracteristica_form.as_p }}
+        
+        <button type="submit">Guardar Producto</button>
+    </form>
+
+    <a href="{% url 'listar_productos' %}"><button>Volver a la Consulta</button></a>
+</body>
+</html>
