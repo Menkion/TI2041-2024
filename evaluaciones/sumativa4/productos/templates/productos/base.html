@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Página{% endblock %}</title>
+</head>
+<body>
+    <!-- Barra superior -->
+    <header style="background-color: #f4f4f4; padding: 10px;">
+        {% if user.is_authenticated %}
+            <span>Bienvenido, {{ user.username }} ({{ user.get_user_type_display }})</span>
+            <a href="{% url 'logout' %}" style="margin-left: 20px;">Cerrar sesión</a>
+        {% else %}
+            <span>Usuario no autenticado</span>
+        {% endif %}
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

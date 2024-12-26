@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h1>Panel de Administración</h1>
+<!-- Contenido específico de la página -->
+{% endblock %}
+
+    <title>Resultado de Guardado</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        {% if error %}
+        <h1>Error al Guardar el Producto</h1>
+        <p><strong>Error:</strong> {{ error }}</p>
+    {% else %}
+
+        <h1>Producto Guardado Exitosamente</h1>
+        
+        <h2>Detalles del Producto</h2>
+        <p><strong>ID:</strong> {{ producto.id }}</p>
+        <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
+        <p><strong>Marca:</strong> {{ producto.marca }}</p>
+        <p><strong>Categoría:</strong> {{ producto.categoria }}</p>  <!-- Asegúrate de que la relación está bien -->
+        <p><strong>Código:</strong> {{ producto.codigo }}</p>
+        <p><strong>Fecha de Vencimiento:</strong> {{ producto.fecha_vencimiento }}</p>
+        <p><strong>Precio:</strong> {{ producto.precio }}</p>
+        <p><strong>Característica:</strong> {{ producto.caracteristica }}</p>
+    {% endif %}
+    {% if producto %}
+    <h1>Producto Guardado Exitosamente</h1>
+    <h2>Detalles del Producto</h2>
+    <p><strong>ID:</strong> {{ producto.id }}</p>
+    <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
+    <p><strong>Marca:</strong> {{ producto.marca|default:"Sin marca" }}</p>
+    <p><strong>Categoría:</strong> {{ producto.categoria|default:"Sin categoría" }}</p>
+    <p><strong>Código:</strong> {{ producto.codigo }}</p>
+    <p><strong>Fecha de Vencimiento:</strong> {{ producto.fecha_vencimiento }}</p>
+    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+    <p><strong>Característica:</strong> {{ producto.caracteristica|default:"Sin característica" }}</p>
+{% else %}
+    <h1>Error al Guardar el Producto</h1>
+    <p><strong>Error:</strong> {{ error }}</p>
+{% endif %}
+
+
+        <div class="buttons">
+            <a href="{% url 'listar_productos' %}" class="button">Ir a Consulta</a>
+            <a href="{% url 'registrar_producto' %}" class="button">Registrar Otro Producto</a>
+        </div>
+    </div>
+</body>
+</html>
+

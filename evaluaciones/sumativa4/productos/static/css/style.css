@@ -1,0 +1,51 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-x: auto; /* Permitir desplazamiento horizontal si es necesario */
+}
+
+.lista-productos {
+    max-height: 500px; /* Limitar la altura de la lista para que sea más manejable */
+    overflow-y: auto; /* Desplazamiento vertical si la lista es muy grande */
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilo para el botón de eliminar discreto */
+.eliminar-boton {
+    background-color: transparent; /* Sin fondo */
+    color: #d9534f; /* Rojo claro pero no fuerte */
+    border: none;
+    font-size:1 px; /* Tamaño pequeño */
+    cursor: pointer;
+    margin-left: 10px; /* Separación del contenido */
+    padding: 0;
+}
+
+.eliminar-boton:hover {
+    color: #c9302c; /* Cambiar el color al pasar por encima */
+    text-decoration: underline; /* Añadir subrayado para enfatizar la interacción */
+}
+
+/* Mejora la presentación responsiva */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    li {
+        font-size: 14px;
+    }
+}
